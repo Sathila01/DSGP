@@ -3,4 +3,3 @@ This is the 2nd year Data Science Group Project. Here we focused on to classify 
 ## Music Genre Classification
 ## Music Instrumental Sound Classification
 ## Chords Identification
-## Voice Type Identificaion
