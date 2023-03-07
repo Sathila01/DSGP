@@ -3,13 +3,13 @@ This is the 2nd year Data Science Group Project. Here we focused on to classify 
 ## Music Genre Classification
 
 ## Music Instrumental Sound Classification
-Content
+### Content ###
  I:  MFCC, kNN
  II .Short-Time Fourier Transform (STFT) and Convolutional Neural Networks (CNN)
  
-Requirements
+### Requirements ###
 
-dataset
+### dataset ###
 
 IRMAS: a dataset for instrument recognition in musical audio signals
 
