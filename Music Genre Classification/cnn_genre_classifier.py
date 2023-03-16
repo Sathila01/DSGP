@@ -3,6 +3,8 @@ import numpy as np
 from sklearn.model_selection import train_test_split
 import tensorflow.keras as keras
 import matplotlib.pyplot as plt
+from sklearn.metrics import confusion_matrix, accuracy_score, recall_score, precision_score, f1_score, classification_report
+from tensorflow.keras.models import load_model
 
 DATA_PATH = "data.json"
 
@@ -120,14 +122,11 @@ def predict(model, X, y):
 
     print("Expected index: {}, Predicted index: {}".format(y, predicted_index))
 
-def load_model(model_path):
-    return keras.models.load_model(model_path)
-
-
 if __name__ == "__main__":
 
     # create train, validation and test sets
-    X_train, X_validation, X_test, y_train, y_validation, y_test = prepare_datasets(0.1, 0.1) # test_size, validation_size
+    X_train, X_validation, X_test, y_train, y_validation, y_test = prepare_datasets(0.1,
+                                                                                    0.1)  # test_size, validation_size
 
     # build CNN network
     input_shape = (X_train.shape[1], X_train.shape[2], 1)
@@ -148,8 +147,43 @@ if __name__ == "__main__":
     plot_history(history)
 
     # evaluate model on test set
-    test_loss, test_acc = model.evaluate(X_test, y_test, verbose=2)
-    print('\nTest accuracy:',test_acc)
+    y_pred = model.predict(X_test)
+    cm = confusion_matrix(y_test, y_pred.argmax(axis=1))
+
+    # define class names
+    classes = ['Blues', 'Classical', 'Country', 'Disco', 'Hip-hop', 'Jazz', 'Metal', 'Pop', 'Reggae', 'Rock']
+
+    # plot confusion matrix
+    fig, ax = plt.subplots()
+    im = ax.imshow(cm, interpolation='nearest', cmap=plt.cm.Blues)
+    ax.figure.colorbar(im, ax=ax)
+    ax.set(xticks=np.arange(cm.shape[1]), yticks=np.arange(cm.shape[0]), xticklabels=classes, yticklabels=classes,
+           title='Confusion Matrix', ylabel='True label', xlabel='Predicted label')
+    plt.setp(ax.get_xticklabels(), rotation=45, ha="right", rotation_mode="anchor")
+
+    # annotate confusion matrix
+    thresh = cm.max() / 2.
+    for i in range(cm.shape[0]):
+        for j in range(cm.shape[1]):
+            ax.text(j, i, format(cm[i, j], 'd'), ha="center", va="center",
+                    color="white" if cm[i, j] > thresh else "black")
+
+    fig.tight_layout()
+    plt.show()
+
+    # calculate and print evaluation metrics
+    accuracy = accuracy_score(y_test, y_pred.argmax(axis=1))
+    recall = recall_score(y_test, y_pred.argmax(axis=1), average='weighted')
+    precision = precision_score(y_test, y_pred.argmax(axis=1), average='weighted')
+    f1 = f1_score(y_test, y_pred.argmax(axis=1), average='weighted')
+    print('\nAccuracy:', accuracy)
+    print('Recall:', recall)
+    print('Precision:', precision)
+    print('F1 Score:', f1)
+
+    # show classification report
+    print('\nClassification Report:')
+    print(classification_report(y_test, y_pred.argmax(axis=1)))
 
     # pick a sample to predict from the test set
     X = X_test[100]
@@ -158,15 +192,11 @@ if __name__ == "__main__":
     # make prediction on a sample
     predict(model, X, y)
 
-    # Save the model
-    model.save("model.h1")
+    # save the model to a h5 file
+    model.save('cnn_genre_model.h5')
 
-    # Load the model
-    saved_model = load_model("model.h1")
-
-    # Make predictions with the saved model
-    predict(saved_model, X, y)
-
+    # load the saved model from the h5 file
+    loaded_model = load_model('cnn_genre_model.h5')
 
 
 
