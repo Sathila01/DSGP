@@ -33,4 +33,23 @@ These data include music from the actual and various decades from the past centu
 Testing data
 Audio: 2874 excerpts in 16 bit stereo wav format sampled at 44.1kHz.
  
-## Chords Identification
+## Chords Identification (major and minor)
+### Content ###
+I:  MFCC, kNN
+
+
+### Requirements ###
+
+### dataset ###
+shords:  a dataset to predict major and minor key
+
+
+This dataset includes two chords keys, they are major and minor. The owner of the dataset is АнатолийМихайлин(https://www.kaggle.com/datasets/mehanat96/major-vs-minor-guitar-chords/code).
+
+This dataset consists of 500+ audio files in wav format. Each audio represents 1 chord played in a major or minor key. As you may know, major chords have a more "happy" sound, while minor chords have a more "sad" sound. 
+
+Training Data
+Audio files: 500 audio files in 16 bit wav format. They are recording of 4 seconds wav files recorded using an electric guitar.
+
+Testing data
+Audio files: 25% of dataset  of audio files in 16 bit wav format.
