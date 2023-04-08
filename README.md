@@ -13,7 +13,9 @@ cnn_genre_classifier.py will access the json file and build the CNN model.
 
 ## Music Instrumental Sound Classification
 ### Content ###
+
  I:  MFCC, kNN
+ 
  II .Short-Time Fourier Transform (STFT) and Convolutional Neural Networks (CNN)
  
 ### Requirements ###
