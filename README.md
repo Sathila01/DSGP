@@ -13,6 +13,10 @@ preprocess.py file will preprocess audio data by extracting mel frequency capstr
 
 cnn_genre_classifier.py will access the json file and build the CNN model.
 
+The trained model will be saved on a h5 file called cnn_genre_model.h5
+
+The predict.py file loads the h5 file along with data.json file and will predict genres for new audio files
+
 ## Music Instrumental Sound Classification
 ### Content
 
