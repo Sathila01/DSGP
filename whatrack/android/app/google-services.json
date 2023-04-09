@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "817974870007",
+    "project_id": "whattrack1",
+    "storage_bucket": "whattrack1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:817974870007:android:eb7035a2a07d6e831f78f2",
+        "android_client_info": {
+          "package_name": "com.whatrack.whatrack"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "817974870007-5ru42bdijcnkkbq888p520g875cl48c8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDIOM7VvE8m19osK_WHBFzfGR7iXzNZtnk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "817974870007-5ru42bdijcnkkbq888p520g875cl48c8.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "817974870007-fajaji3dt93cgs7dcjje26fdds1eims7.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.whatrack.whatrack"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
